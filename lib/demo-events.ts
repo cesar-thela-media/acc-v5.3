@@ -11,12 +11,13 @@ import {
 
 export const DEMO_EVENTS_KEY = "acc-demo-events";
 
-const THURSDAY = 4;
-const firstConsultation = nextFirstWeekdayOfMonth(THURSDAY, 0);
+/** Friday = 5 (first Friday of the month — matches marketing copy) */
+const FRIDAY = 5;
+const firstConsultation = nextFirstWeekdayOfMonth(FRIDAY, 0);
 const monthsUntilFirst =
   (firstConsultation.getFullYear() - new Date().getFullYear()) * 12 +
   (firstConsultation.getMonth() - new Date().getMonth());
-const secondConsultation = nextFirstWeekdayOfMonth(THURSDAY, monthsUntilFirst + 1);
+const secondConsultation = nextFirstWeekdayOfMonth(FRIDAY, monthsUntilFirst + 1);
 
 export type DemoEvent = {
   id: number;

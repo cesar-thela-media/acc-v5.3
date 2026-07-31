@@ -78,7 +78,7 @@ export function EventsClient({ hasCertificates }: { hasCertificates: boolean }) 
       <PageHeader
         eyebrow="Events"
         title="Upcoming events"
-        description="Case consultation, CEU trainings, and workshops: same calendar Sarah manages in admin."
+        description="Case consultation, CEU trainings, and workshops."
       />
 
       <Tabs defaultValue="list">

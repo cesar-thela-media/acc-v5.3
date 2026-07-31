@@ -162,7 +162,7 @@ export function MembershipCarousel({ slides }: { slides: MembershipSlide[] }) {
             : "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
       }}
     >
-      <div className="relative w-full max-w-7xl h-[22rem] sm:h-128 lg:h-144 flex items-center justify-center">
+      <div className="relative w-full max-w-7xl h-[24rem] sm:h-136 lg:h-152 flex items-center justify-center">
         <motion.div
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
@@ -277,7 +277,8 @@ function MembershipCard({ slide, index, total, progress, config }: CardProps) {
       style={{ x, rotate, y, scale, opacity, zIndex, background: "#fff" }}
       className={cn(
         "absolute rounded-2xl overflow-hidden group pointer-events-none",
-        "w-[13.5rem] h-[17.5rem] sm:w-64 sm:h-88 lg:w-80 lg:h-104"
+        // Taller cards so full membership body copy fits without ellipsis
+        "w-[13.5rem] h-[19.5rem] sm:w-64 sm:h-96 lg:w-80 lg:h-112"
       )}
     >
       <Image
@@ -291,7 +292,7 @@ function MembershipCard({ slide, index, total, progress, config }: CardProps) {
 
       <motion.div style={{ opacity: dimOpacity }} className="absolute inset-0 bg-black pointer-events-none" />
 
-      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/35 to-transparent" />
 
       <Badge
         className="absolute top-3 right-3 sm:top-5 sm:right-5 lg:top-6 lg:right-6 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-white/95 backdrop-blur-md text-[10px] sm:text-xs font-bold uppercase tracking-widest"
@@ -300,16 +301,17 @@ function MembershipCard({ slide, index, total, progress, config }: CardProps) {
         {slide.badge}
       </Badge>
 
-      <div className="absolute bottom-4 left-3 right-3 sm:bottom-8 sm:left-5 sm:right-5 lg:bottom-10 lg:left-6 lg:right-6 text-white text-left">
+      {/* Full body copy (no line-clamp/ellipsis). Grows upward from bottom so Sarah’s full text is readable. */}
+      <div className="absolute bottom-5 left-3 right-3 sm:bottom-6 sm:left-5 sm:right-5 lg:bottom-8 lg:left-6 lg:right-6 text-white text-left">
         <motion.p
           style={{ opacity: textOpacity }}
-          className="text-sm sm:text-lg lg:text-xl font-semibold leading-tight mb-0.5 sm:mb-1 drop-shadow-md"
+          className="text-sm sm:text-lg lg:text-xl font-semibold leading-tight mb-1 sm:mb-1.5 drop-shadow-md"
         >
           {slide.title}
         </motion.p>
         <motion.p
           style={{ opacity: textOpacity }}
-          className="text-[11px] sm:text-xs text-white/75 line-clamp-2 font-medium"
+          className="text-[11px] sm:text-xs lg:text-[13px] text-white/80 font-medium leading-snug"
         >
           {slide.description}
         </motion.p>

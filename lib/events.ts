@@ -1,15 +1,16 @@
 import { daysFromNow, formatLongDate, nextFirstWeekdayOfMonth } from "@/lib/relativeDates";
 
-const THURSDAY = 4;
+/** Friday = 5 (first Friday of the month — matches marketing copy) */
+const FRIDAY = 5;
 
-// Two upcoming "first Thursday of the month" consultation dates, guaranteed
+// Two upcoming "first Friday of the month" consultation dates, guaranteed
 // to be a full calendar month apart regardless of whether this month's has
 // already passed (nextFirstWeekdayOfMonth(_, 0) may itself roll to next month).
-const firstConsultation = nextFirstWeekdayOfMonth(THURSDAY, 0);
+const firstConsultation = nextFirstWeekdayOfMonth(FRIDAY, 0);
 const monthsUntilFirst =
   (firstConsultation.getFullYear() - new Date().getFullYear()) * 12 +
   (firstConsultation.getMonth() - new Date().getMonth());
-const secondConsultation = nextFirstWeekdayOfMonth(THURSDAY, monthsUntilFirst + 1);
+const secondConsultation = nextFirstWeekdayOfMonth(FRIDAY, monthsUntilFirst + 1);
 
 export interface CircleEvent {
   id: number;

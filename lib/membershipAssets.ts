@@ -2,8 +2,16 @@
  * Canonical membership carousel slides + public image paths.
  * Keep paths here so homepage (and any reuse) cannot drift.
  *
- * Images live in /public as optimized JPEGs. Raw source dumps go in
+ * Images live in /public as optimized JPEGs. Raw designer dumps go in
  * _source-assets/ (gitignored) — never commit multi‑MB source PNGs.
+ *
+ * Image direction (Sarah): more variety, less corporate “lots of people.”
+ * Keep the feel of CE, directory, and private coaching; prefer new art for
+ * resource library + consultation or online community when dumps change.
+ *
+ * Uniqueness: every major homepage path is listed once in
+ * `homepageMajorImagePaths()`. Do not reuse `/private-practice-can.jpg`
+ * (section 2) or CTA filmstrip sources inside the carousel.
  */
 
 export type MembershipItem = {
@@ -19,31 +27,36 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     title: "Monthly case consultation",
     badge: "Consultation",
     body: "A structured consultation group led by Sarah Arnold, LPC-S. Bring a real case, get real support from peers who understand the clinical realities of your work.",
-    img: "/membership-consultation.jpg",
+    // Generated warm peer case discussion — NOT admin-login-bg chair still-life
+    img: "/membership-consultation-d.jpg",
   },
   {
     title: "Curated resource library",
     badge: "Resources",
     body: "Clinical tools, handouts, and business guides, organized, downloadable, and built for active private practice.",
-    img: "/membership-resources.jpg",
+    // Still-life tools/planner — reserved for carousel (not CTA filmstrip)
+    img: "/membership-resources-b.jpg",
   },
   {
     title: "Peer consultation community",
     badge: "Peers",
     body: "Stay connected between meetings with clinicians who understand private practice: real-time support without a formal referral product yet.",
-    img: "/membership-referral.jpg",
+    // Generated outdoor peer chat — distinct from consultation table scene
+    img: "/membership-peers-d.jpg",
   },
   {
     title: "Continuing education",
     badge: "CEUs",
     body: "CEU trainings each month on clinical and business topics, all virtual, all archived, and all included in your membership.",
-    img: "/membership-ce.jpg",
+    // Warm solo laptop (Sarah-liked feel) — new path so Next never serves cached whiteboard
+    img: "/membership-ce-b.jpg",
   },
   {
     title: "Member directory (at launch)",
     badge: "Directory",
     body: "A searchable clinician directory is planned for launch: specialty, format, and availability. Until then, focus stays on consultation and resources.",
-    img: "/membership-directory.jpg",
+    // Generated warm still-life (notebook + cards) — not Yellowstone map, not peers photo
+    img: "/membership-directory-c.jpg",
   },
   {
     title: "Practice coaching access",
@@ -61,16 +74,33 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     title: "Private online community",
     badge: "Community",
     body: "A private online community for real-time support, connection, and steady encouragement between meetings.",
-    img: "/membership-community.jpg",
+    // Casual small collab — reserved for carousel (not CTA filmstrip)
+    img: "/membership-community-b.jpg",
   },
 ];
 
-/** Homepage CTA filmstrip (cta-12). Paths must stay unique vs major content slots. */
+/**
+ * Homepage CTA filmstrip. Must not reuse carousel filenames or
+ * `/private-practice-can.jpg`. Avoid cta-2 / cta-5 — those pixels were
+ * copied into membership-resources-b / membership-community-b.
+ */
 export const CTA_FILMSTRIP = [
   { src: "/cta-1.jpg", height: "h-[154px] md:h-[214px]" },
-  { src: "/cta-2.jpg", height: "h-[244px] md:h-[324px]" },
+  { src: "/cta-3.jpg", height: "h-[244px] md:h-[324px]" },
   { src: "/cta-4.jpg", height: "h-[176px] md:h-[226px]" },
-  { src: "/cta-5.jpg", height: "h-[230px] md:h-[300px]" },
-  { src: "/cta-6.jpg", height: "h-[154px] md:h-[214px]" },
-  { src: "/cta-3.jpg", height: "h-[188px] md:h-[268px]" },
+  { src: "/cta-6.jpg", height: "h-[230px] md:h-[300px]" },
+  { src: "/believe-professional.jpg", height: "h-[154px] md:h-[214px]" },
+  { src: "/believe-sustainable.jpg", height: "h-[188px] md:h-[268px]" },
 ] as const;
+
+/** Major homepage photo slots — paths must be unique (one use each). */
+export function homepageMajorImagePaths(): string[] {
+  return [
+    "/private-practice-can.jpg",
+    "/hero-bg-2.jpg",
+    "/pricing-bg.jpg",
+    "/testimonials-cta-bg.jpg",
+    ...MEMBERSHIP_ITEMS.map((i) => i.img),
+    ...CTA_FILMSTRIP.map((i) => i.src),
+  ];
+}

@@ -20,7 +20,7 @@ function toIcsDate(d: Date) {
 export function downloadIcsEvent(params: {
   title: string;
   description: string;
-  dateLabel: string; // e.g. "Thursday, May 1, 2026" — parsed to get the calendar date
+  dateLabel: string; // e.g. "Friday, May 1, 2026" — parsed to get the calendar date
   startHour: number;
   durationMinutes: number;
 }) {

@@ -12,10 +12,10 @@ export function daysAgo(days: number): Date {
   return daysFromNow(-days);
 }
 
-// The monthly case consultation always runs "the first Thursday of the
-// month" (per the client's literal FAQ wording) — this finds the next such
-// date that's still in the future, rolling to next month if this month's
-// first Thursday has already passed. weekday: 0=Sun..6=Sat.
+// The monthly case consultation runs the first Friday of the month
+// (per client FAQ). This finds the next such date still in the future,
+// rolling to next month if this month's first Friday has already passed.
+// weekday: 0=Sun..6=Sat (Friday = 5).
 export function nextFirstWeekdayOfMonth(weekday: number, monthsAhead = 0): Date {
   const now = new Date();
   const d = new Date(now.getFullYear(), now.getMonth() + monthsAhead, 1);
@@ -26,7 +26,7 @@ export function nextFirstWeekdayOfMonth(weekday: number, monthsAhead = 0): Date 
   return d;
 }
 
-// "Thursday, May 1, 2026"
+// "Friday, May 1, 2026"
 export function formatLongDate(d: Date): string {
   return d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
 }

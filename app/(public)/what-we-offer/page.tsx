@@ -18,7 +18,7 @@ const AMBER = "#C2963A";
 const pricingFeatures = MEMBERSHIP_BENEFITS;
 
 const offerDetails = [
-  "A structured consultation group meets the first Thursday of every month from 9:00 to 11:00am. Bring your difficult cases, process with trusted peers, and leave with a new perspective.",
+  "A structured consultation group meets the first Friday of every month from 9:00 to 11:00am. Bring your difficult cases, process with trusted peers, and leave with a new perspective.",
   "Access to continuing education content aligned with your licensure requirements. Curated for practicing clinicians and designed for professional growth.",
   "A member directory (launching soon) searchable by specialty, modality, location, and availability, so referrals stay within a trusted clinical community.",
   "Mindfulness practices and burnout prevention structures designed specifically for therapists carrying heavy caseloads. Because your sustainability matters too.",
@@ -35,7 +35,7 @@ const faqs = [
   },
   {
     q: "How does the consultation group work?",
-    a: "The monthly group meets virtually on the first Thursday of each month, 9:00 to 11:00am. Members may present cases for discussion, and various topics will be covered for CEUs. The group is kept intentionally small for the quality of discussion.",
+    a: "The monthly group meets virtually on the first Friday of each month, 9:00 to 11:00am. Members may present cases for discussion, and various topics will be covered for CEUs. The group is kept intentionally small for the quality of discussion.",
   },
   {
     q: "Is there a long-term contract?",
