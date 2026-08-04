@@ -38,10 +38,10 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     img: "/membership-resources-b.jpg",
   },
   {
-    title: "Peer consultation community",
-    badge: "Peers",
-    body: "Stay connected between meetings with clinicians who understand private practice: real-time support without a formal referral product yet.",
-    // Generated outdoor peer chat — distinct from consultation table scene
+    // Text restored to v5 Referrals (unsolicited Peers concept); keep current art path
+    title: "Referral network",
+    badge: "Referrals",
+    body: "A trusted, vetted circle of clinicians. Get referred, refer with confidence. Build relationships that last longer than a single consult.",
     img: "/membership-peers-d.jpg",
   },
   {

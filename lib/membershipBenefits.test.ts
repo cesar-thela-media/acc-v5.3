@@ -119,25 +119,17 @@ describe("MEMBERSHIP_ITEMS public images", () => {
     }
   });
 
-  it("never reuses private-practice-can or about-us stock for Peers; Directory is unique", () => {
-    const peers = MEMBERSHIP_ITEMS.find((i) => i.badge === "Peers");
+  it("restores v5 Referrals copy (not Peers badge); image path may stay on current art", () => {
+    const referrals = MEMBERSHIP_ITEMS.find((i) => i.badge === "Referrals");
     const dir = MEMBERSHIP_ITEMS.find((i) => i.badge === "Directory");
-    assert.ok(peers && dir);
-    assert.notEqual(peers!.img, dir!.img);
-    assert.notEqual(peers!.img, "/private-practice-can.jpg");
-    assert.notEqual(peers!.img, "/about-us.jpg");
-    assert.notEqual(peers!.img, "/membership-peers-b.jpg");
-    assert.notEqual(peers!.img, "/membership-peers-c.jpg");
-    assert.notEqual(dir!.img, "/membership-directory.jpg");
-    const peersBuf = readFileSync(join(ROOT, "public", peers!.img.replace(/^\//, "")));
-    const dirBuf = readFileSync(join(ROOT, "public", dir!.img.replace(/^\//, "")));
-    const ppcBuf = readFileSync(join(ROOT, "public/private-practice-can.jpg"));
-    const consult = MEMBERSHIP_ITEMS.find((i) => i.badge === "Consultation");
-    assert.ok(consult);
-    const consultBuf = readFileSync(join(ROOT, "public", consult!.img.replace(/^\//, "")));
-    assert.equal(peersBuf.equals(dirBuf), false, "Peers and Directory must differ");
-    assert.equal(peersBuf.equals(ppcBuf), false, "Peers ≠ section-2 private-practice-can");
-    assert.equal(peersBuf.equals(consultBuf), false, "Peers ≠ Consultation");
+    assert.ok(referrals, "Referrals badge must exist (v5 text parity)");
+    assert.equal(MEMBERSHIP_ITEMS.some((i) => i.badge === "Peers"), false, "Peers badge was unsolicited");
+    assert.equal(referrals!.title, "Referral network");
+    assert.match(referrals!.body, /vetted|refer/i);
+    assert.ok(dir);
+    assert.notEqual(referrals!.img, dir!.img);
+    const refAbs = join(ROOT, "public", referrals!.img.replace(/^\//, ""));
+    assert.equal(existsSync(refAbs), true, `missing ${referrals!.img}`);
   });
 
   it("consultation is not the admin-login chair still-life", () => {
