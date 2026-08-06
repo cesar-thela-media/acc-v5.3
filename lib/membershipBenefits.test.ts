@@ -119,17 +119,44 @@ describe("MEMBERSHIP_ITEMS public images", () => {
     }
   });
 
-  it("restores v5 Referrals copy (not Peers badge); image path may stay on current art", () => {
+  it("has no Peer consultation card; Referrals + Private community stay distinct", () => {
     const referrals = MEMBERSHIP_ITEMS.find((i) => i.badge === "Referrals");
+    const community = MEMBERSHIP_ITEMS.find((i) => i.badge === "Community");
     const dir = MEMBERSHIP_ITEMS.find((i) => i.badge === "Directory");
     assert.ok(referrals, "Referrals badge must exist (v5 text parity)");
+    assert.ok(community, "Community badge must exist");
     assert.equal(MEMBERSHIP_ITEMS.some((i) => i.badge === "Peers"), false, "Peers badge was unsolicited");
+    assert.equal(
+      MEMBERSHIP_ITEMS.some((i) => /peer consultation/i.test(i.title)),
+      false,
+      "Peer consultation community card must be removed",
+    );
     assert.equal(referrals!.title, "Referral network");
     assert.match(referrals!.body, /vetted|refer/i);
+    assert.equal(community!.title, "Private online community");
+    assert.match(community!.body, /private online community for real-time support/i);
+    // Garden/patio art lives on Private online community (Sarah image swap)
+    assert.equal(community!.img, "/membership-peers-d.jpg");
+    assert.notEqual(referrals!.img, community!.img);
     assert.ok(dir);
     assert.notEqual(referrals!.img, dir!.img);
     const refAbs = join(ROOT, "public", referrals!.img.replace(/^\//, ""));
     assert.equal(existsSync(refAbs), true, `missing ${referrals!.img}`);
+    const comAbs = join(ROOT, "public", community!.img.replace(/^\//, ""));
+    assert.equal(existsSync(comAbs), true, `missing ${community!.img}`);
+  });
+
+  it("Member Directory keeps title family and restores v5 description copy", () => {
+    const dir = MEMBERSHIP_ITEMS.find((i) => i.badge === "Directory");
+    assert.ok(dir);
+    assert.match(dir!.title, /^Member [Dd]irectory/);
+    assert.equal(
+      dir!.body,
+      "A professionally crafted listing in our public clinician directory, searchable by specialty, format, and availability. Clients find you here.",
+    );
+    // Not the tentative “at launch / focus stays on consultation” rewrite
+    assert.equal(dir!.body.toLowerCase().includes("planned for launch"), false);
+    assert.equal(dir!.body.toLowerCase().includes("until then"), false);
   });
 
   it("consultation is not the admin-login chair still-life", () => {

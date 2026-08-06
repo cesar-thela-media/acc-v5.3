@@ -38,11 +38,11 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     img: "/membership-resources-b.jpg",
   },
   {
-    // Text restored to v5 Referrals (unsolicited Peers concept); keep current art path
+    // Referrals (not a second “community” card). Garden art moved to Private online community per Sarah.
     title: "Referral network",
     badge: "Referrals",
     body: "A trusted, vetted circle of clinicians. Get referred, refer with confidence. Build relationships that last longer than a single consult.",
-    img: "/membership-peers-d.jpg",
+    img: "/membership-referral.jpg",
   },
   {
     title: "Continuing education",
@@ -52,9 +52,10 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     img: "/membership-ce-b.jpg",
   },
   {
-    title: "Member directory (at launch)",
+    // Title: Member Directory (Sarah OK). Body restored from v5 “previous version” screenshot.
+    title: "Member Directory",
     badge: "Directory",
-    body: "A searchable clinician directory is planned for launch: specialty, format, and availability. Until then, focus stays on consultation and resources.",
+    body: "A professionally crafted listing in our public clinician directory, searchable by specialty, format, and availability. Clients find you here.",
     // Generated warm still-life (notebook + cards) — not Yellowstone map, not peers photo
     img: "/membership-directory-c.jpg",
   },
@@ -74,8 +75,8 @@ export const MEMBERSHIP_ITEMS: MembershipItem[] = [
     title: "Private online community",
     badge: "Community",
     body: "A private online community for real-time support, connection, and steady encouragement between meetings.",
-    // Casual small collab — reserved for carousel (not CTA filmstrip)
-    img: "/membership-community-b.jpg",
+    // Sarah: use garden/patio image (was on Peer consultation card) — keep this wording
+    img: "/membership-peers-d.jpg",
   },
 ];
 
